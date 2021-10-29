@@ -1,0 +1,121 @@
+= Vacation Management System HTTP API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:sectnums:
+:snippets: build/generated-snippets
+
+== 개요
+
+이 문서는 Vacation Management System 에서 제공하는 HTTP API에 대해서 기술합니다.
+
+== User API
+
+=== 로그인 API - OK(200)
+==== Request
+include::{snippets}/users-sign-in-ok/http-request.adoc[]
+include::{snippets}/users-sign-in-ok/request-fields.adoc[]
+==== Response
+include::{snippets}/users-sign-in-ok/http-response.adoc[]
+include::{snippets}/users-sign-in-ok/response-fields.adoc[]
+
+=== 로그인 API - BAD REQUEST(400, 아이디가 없는 경우)
+==== Request
+include::{snippets}/users-sign-in-id-bad-request/http-request.adoc[]
+include::{snippets}/users-sign-in-id-bad-request/request-fields.adoc[]
+==== Response
+include::{snippets}/users-sign-in-id-bad-request/http-response.adoc[]
+include::{snippets}/users-sign-in-id-bad-request/response-fields.adoc[]
+
+=== 로그인 API - BAD REQUEST(400, 비밀번호가 틀린 경우)
+==== Request
+include::{snippets}/users-sign-in-password-bad-request/http-request.adoc[]
+include::{snippets}/users-sign-in-password-bad-request/request-fields.adoc[]
+==== Response
+include::{snippets}/users-sign-in-password-bad-request/http-response.adoc[]
+include::{snippets}/users-sign-in-password-bad-request/response-fields.adoc[]
+
+== Vacation API
+
+=== Vacation Type
+* class me.dgahn.vms.domain.entity.VacationType
+
+[cols=2*,options=header]
+|===
+|Type
+|Description
+
+|ANNUAL_LEAVE
+|연차
+
+|HALF_LEAVE
+|반차
+
+|HALF_HALF_LEAVE
+|반반차
+|===
+
+=== 휴가 생성 API - CREATED(201)
+==== Request
+include::{snippets}/vacation-create-created/http-request.adoc[]
+include::{snippets}/vacation-create-created/request-fields.adoc[]
+==== Response
+include::{snippets}/vacation-create-created/http-response.adoc[]
+include::{snippets}/vacation-create-created/response-fields.adoc[]
+
+=== 휴가 생성 API - BAD_REQUEST(400, 사용자의 휴가보다 더 휴가 신청하는 경우)
+==== Request
+include::{snippets}/vacation-create-bad-request/http-request.adoc[]
+include::{snippets}/vacation-create-bad-request/request-fields.adoc[]
+==== Response
+include::{snippets}/vacation-create-bad-request/http-response.adoc[]
+include::{snippets}/vacation-create-bad-request/response-fields.adoc[]
+
+=== 휴가 생성 API - BAD_REQUEST(400, 충분한 휴가 요청 속성을 넣지 않는 경우)
+==== Request
+include::{snippets}/vacation-create-not-enough-bad-request/http-request.adoc[]
+include::{snippets}/vacation-create-not-enough-bad-request/request-fields.adoc[]
+==== Response
+include::{snippets}/vacation-create-not-enough-bad-request/http-response.adoc[]
+include::{snippets}/vacation-create-not-enough-bad-request/response-fields.adoc[]
+
+=== 휴가 목록 조회 API - OK(200)
+==== Request
+include::{snippets}/vacation-list-ok/http-request.adoc[]
+include::{snippets}/vacation-list-ok/request-parameters.adoc[]
+==== Response
+include::{snippets}/vacation-list-ok/http-response.adoc[]
+include::{snippets}/vacation-list-ok/response-fields.adoc[]
+
+=== 휴가 조회 API - OK(200)
+==== Request
+include::{snippets}/vacation-get-ok/http-request.adoc[]
+include::{snippets}/vacation-get-ok/path-parameters.adoc[]
+==== Response
+include::{snippets}/vacation-get-ok/http-response.adoc[]
+include::{snippets}/vacation-get-ok/response-fields.adoc[]
+
+=== 휴가 조회 API - BAD REQUEST(400, 아이디가 없는 경우)
+==== Request
+include::{snippets}/vacation-get-id-bad-request/http-request.adoc[]
+include::{snippets}/vacation-get-id-bad-request/path-parameters.adoc[]
+==== Response
+include::{snippets}/vacation-get-id-bad-request/http-response.adoc[]
+include::{snippets}/vacation-get-id-bad-request/response-fields.adoc[]
+
+=== 휴가 삭제 API - OK(200)
+==== Request
+include::{snippets}/vacation-delete-ok/http-request.adoc[]
+include::{snippets}/vacation-delete-ok/path-parameters.adoc[]
+==== Response
+include::{snippets}/vacation-delete-ok/http-response.adoc[]
+include::{snippets}/vacation-delete-ok/response-fields.adoc[]
+
+=== 휴가 삭제 API - BAD REQUEST(400, 지난 휴가를 취소하는 경우)
+==== Request
+include::{snippets}/vacation-delete-used-bad-request/http-request.adoc[]
+include::{snippets}/vacation-delete-used-bad-request/path-parameters.adoc[]
+==== Response
+include::{snippets}/vacation-delete-used-bad-request/http-response.adoc[]
+include::{snippets}/vacation-delete-used-bad-request/response-fields.adoc[]

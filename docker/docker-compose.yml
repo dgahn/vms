@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  server:
+    restart: always
+    image: vms:0.1.0
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: vms
+      POSTGERS_USER: vms
+      POSTGRES_PASSWORD: vms
+    networks:
+      - vms-net
+
+  db:
+    restart: always
+    image: postgres-vms:0.1.0
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
+    networks:
+      - vms-net
+
+volumes:
+  db:
+
+networks:
+  vms-net:
