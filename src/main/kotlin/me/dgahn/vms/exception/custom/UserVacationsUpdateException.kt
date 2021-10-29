@@ -2,4 +2,4 @@ package me.dgahn.vms.exception.custom
 
 import me.dgahn.vms.exception.ErrorCode
 
-class UserVacationsUpdateException : CustomException(ErrorCode.ERROR_105)
+class UserVacationsUpdateException : BadRequestException(ErrorCode.ERROR_105)
